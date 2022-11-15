@@ -73,11 +73,11 @@
       </div>
       <div class="flex flex-wrap justify-center gap-8 pb-[40px] md:py-[40px] ">
          <div class=" w-[90%] sm:w-[35%] flex items-center p-3 ">
-          <a href="" class="flex-1">
+          <a href="https://www.microsoft.com/en-ng/about" target="_blank" class="flex-1">
             <img src="asset/microsoft.png" alt="" class=""/>
           </a>
      
-          <a href="" class="flex-1">
+          <a href="https://wootlab.ng/foundation" target="_blank" class="flex-1">
             <img src="asset/foundationLogo.png" alt="" class="">
           </a>
         </div>
@@ -371,22 +371,7 @@
     </script>
 
     <script>
-      var slider = 0;
-      showSlider();
-
-      function showSlider() {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        slider++;
-        if (slider > slides.length) {
-          slider = 1;
-        }
-        slides[slider - 1].style.display = "block";
-        setTimeout(showSlider, 11000);
-      }
+   
 
       const counters = document.querySelectorAll(".value");
 
@@ -408,19 +393,37 @@
         animate();
       });
 
+let slideIndex = 1;
+showSlides();
 
-      let slideIndex = 1;
-      showSlides(slideIndex);
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 10000); 
+}
 
+     
+      showSlide(slideIndex);
       function plusSlides(n) {
-        showSlides((slideIndex += n));
+        showSlide((slideIndex += n));
       }
 
       function currentSlide(n) {
-        showSlides((slideIndex = n));
+        showSlide((slideIndex = n));
       }
 
-      function showSlides(n) {
+      function showSlide(n) {
         let i;
         let slides = document.getElementsByClassName("mySlides");
         let dots = document.getElementsByClassName("dot");
@@ -434,7 +437,7 @@
           slides[i].style.display = "none";
         }
         for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
+          dots[i].className = dots[i].className.replace("active", "");
         }
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
