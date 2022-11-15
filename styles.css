@@ -133,7 +133,11 @@ img {
 }
 
 
-
+.containerSlide{
+    width: 100%;
+    box-sizing: border-box !important;
+    overflow-x: hidden;
+}
 
 
 .scale-in-tl {
